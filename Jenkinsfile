@@ -24,6 +24,7 @@ pipeline {
         }
         stage('Terraform init') {
             steps {
+                rm -rf .terraform
                 sh 'terraform init'
             }
         }
