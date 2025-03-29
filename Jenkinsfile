@@ -1,10 +1,10 @@
 pipeline {
-    agent {
-            docker {
-                image 'hashicorp/terraform:latest'
-            }
-    }    
+    agent any 
 
+    tools {
+        terraform 'Terraform' // Use the name you configured in Global Tool Configuration
+    }
+    
     parameters {
         booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
         choice(name: 'action', choices: ['apply', 'destroy'], description: 'Select the action to perform')
